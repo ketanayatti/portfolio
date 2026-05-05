@@ -14,8 +14,8 @@ export default function Philosophy() {
 
   return (
     <section id="philosophy" className="card-section">
-      <div className="card-bg-container"><div className="card-bg-surface" style={{ backgroundColor: 'var(--bg-surface)' }} /></div>
-      <div className="relative z-10 min-h-screen flex flex-col items-center py-20 px-6 md:px-16 overflow-hidden w-full">
+      <div className="card-bg-container"><div className="card-bg-surface" /></div>
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center py-20 px-6 md:px-16 overflow-hidden w-full">
         <div className="section-number">06</div>
 
         {/* 3D Orb positioned visually on the right half */}
@@ -26,7 +26,7 @@ export default function Philosophy() {
         </div>
 
         <motion.div
-          className="relative z-10 max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-start"
+          className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-start"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -39,7 +39,7 @@ export default function Philosophy() {
               <h2 className="heading-xl">How I think about building</h2>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="flex flex-col gap-3">
+            <motion.div variants={fadeUp} className="flex flex-col gap-1">
               {PHILOSOPHY.map((item, index) => {
                 const isActive = activeIndex === index;
 
@@ -61,13 +61,13 @@ export default function Philosophy() {
                     {/* Hover border overlay */}
                     <div className={`absolute inset-0 border border-[var(--bg-border)] rounded-2xl pointer-events-none transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'}`} />
 
-                    <motion.div layout className="p-4 md:p-5 flex items-center justify-between gap-4 relative z-10">
+                    <motion.div layout className="p-6 md:p-8 flex items-center justify-between gap-6 relative z-10">
                       <div className="flex items-center gap-5">
-                        <span className={`mono text-xs font-semibold transition-colors duration-300 ${isActive ? 'text-[var(--accent)]' : 'text-[var(--text-muted)]'}`}>
+                        <span className={`mono text-[10px] md:text-xs font-semibold transition-colors duration-300 ${isActive ? 'text-[var(--accent)]' : 'text-[var(--text-muted)]'}`}>
                           {item.number}
                         </span>
 
-                        <h3 className={`text-base md:text-lg font-medium transition-colors duration-300 ${isActive ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]'}`}>
+                        <h3 className={`text-sm md:text-base font-medium transition-colors duration-300 ${isActive ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]'}`}>
                           {item.statement}
                         </h3>
                       </div>
@@ -85,9 +85,9 @@ export default function Philosophy() {
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                         >
-                          <div className="px-4 md:px-5 pb-5 pt-0 pl-[3.25rem] md:pl-[3.5rem] relative z-10">
-                            <div className="pl-4 border-l-2 border-[var(--bg-border)]">
-                              <p className="body-sm text-[var(--text-secondary)] leading-relaxed">
+                          <div className="px-6 md:px-8 pb-8 pt-0 pl-[4rem] md:pl-[4.75rem] relative z-10">
+                            <div className="pl-5 border-l-2 border-[var(--accent-soft)]">
+                              <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
                                 {item.detail}
                               </p>
                             </div>

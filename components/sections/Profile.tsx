@@ -3,51 +3,70 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { fadeUp, staggerContainer } from '@/lib/animations'
+import { useTheme } from '@/components/providers/ThemeProvider'
 import { Server, Layers } from 'lucide-react'
 
 /* ─── Card Data ─────────────────────────────────────────── */
 
-const PROFILE_CARDS = [
+const PROFILE_CARDS_BASE = [
   {
     id: 'devops',
     index: '01',
     role: 'DevOps Engineer',
-    subtitle: 'Infrastructure & Automation Focus',
+    subtitle: 'Infrastructure, Automation & System Reliability',
     icon: Server,
-    accent: '#7c6ff7',
-    accentSoft: 'rgba(124, 111, 247, 0.12)',
-    accentGlow: 'rgba(124, 111, 247, 0.30)',
-    tags: ['Kubernetes', 'Terraform', 'CI/CD', 'Docker', 'Cloud'],
-    description: 'Building scalable, automated infrastructure solutions with a strong foundation in containerization and cloud platforms.',
+    tags: ['CI/CD', 'Docker', 'AWS', 'Linux', 'NGINX', 'Automation', 'Reliability'],
+    description: 'Focused on building and maintaining production-grade systems with automation and reliability at the core. Designs CI/CD pipelines, manages infrastructure, and ensures systems remain stable under failure conditions.',
     highlights: [
-      { label: 'Primary Expertise', value: 'Infrastructure Automation' },
-      { label: 'Cloud Platforms', value: 'AWS, Azure, GCP' },
-      { label: 'Key Skills', value: 'K8s, IaC, SRE' },
+      { label: 'CI/CD Automation', value: 'Jenkins, GitHub Actions' },
+      { label: 'AWS Infrastructure', value: 'EC2, VPC, S3, CloudWatch' },
+      { label: 'Zero-Downtime Deployment', value: 'Blue-Green, Rollback' },
     ],
   },
   {
     id: 'fullstack',
     index: '02',
-    role: 'Full Stack Capabilities',
-    subtitle: 'End-to-End Development',
+    role: 'Full Stack Engineering',
+    subtitle: 'End-to-End Application Development',
     icon: Layers,
-    accent: '#06b6d4',
-    accentSoft: 'rgba(6, 182, 212, 0.12)',
-    accentGlow: 'rgba(6, 182, 212, 0.30)',
-    tags: ['React', 'Next.js', 'Node.js', 'TypeScript'],
-    description: 'Comprehensive development experience across frontend and backend, enabling seamless integration with DevOps solutions.',
+    tags: ['React', 'Node.js', 'TypeScript', 'FastAPI', 'MongoDB'],
+    description: 'Experienced in building complete systems from frontend to backend, ensuring seamless integration between application and infrastructure layers.',
     highlights: [
-      { label: 'Frontend', value: 'React, Next.js, Web' },
-      { label: 'Backend', value: 'Node.js, APIs, Services' },
-      { label: 'Integration', value: 'Full Production Pipelines' },
+      { label: 'Frontend Systems', value: 'React, TypeScript, Next.js' },
+      { label: 'Backend APIs', value: 'Node.js, Express, FastAPI' },
+      { label: 'Full Lifecycle Development', value: 'End-to-End Integration' },
     ],
   },
 ]
 
+const getAccentColors = (theme: 'dark' | 'light') => {
+  if (theme === 'dark') {
+    // Dark theme: Purple
+    return {
+      accent: '#7c6ff7',
+      accentSoft: 'rgba(124, 111, 247, 0.12)',
+      accentGlow: 'rgba(124, 111, 247, 0.30)',
+    }
+  } else {
+    // Light theme: Dark Green
+    return {
+      accent: '#2F4F2F',
+      accentSoft: 'rgba(47, 79, 47, 0.12)',
+      accentGlow: 'rgba(47, 79, 47, 0.30)',
+    }
+  }
+}
+
 /* ─── Slider ────────────────────────────────────────────── */
 
 export default function Profile() {
+  const { theme } = useTheme()
   const [active, setActive] = useState(0) // DevOps card by default
+  const accentColors = getAccentColors(theme)
+  const PROFILE_CARDS = PROFILE_CARDS_BASE.map(card => ({
+    ...card,
+    ...accentColors,
+  }))
   const [direction, setDirection] = useState<1 | -1>(1)
   const total = PROFILE_CARDS.length
 

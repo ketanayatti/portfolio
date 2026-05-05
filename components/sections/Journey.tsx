@@ -77,22 +77,43 @@ export default function Journey() {
 
                   {/* Card */}
                   <div className={`flex-1 ml-12 md:flex-none md:ml-0 md:w-[45%] ${isLeft ? 'md:pr-12' : 'md:pl-12'} ${isLeft ? '' : 'md:ml-auto'}`}>
-                    <div className="glass-card p-6 space-y-3 relative overflow-hidden group">
-                      {/* Hover glow effect on card */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-[var(--accent-soft)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    <div className="glass-card p-5 md:p-6 flex flex-col gap-3 md:gap-4 relative overflow-hidden group transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[var(--accent-glow)]">
+                      {/* Premium animated gradient background */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-soft)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                      
+                      {/* Decorative accent line */}
+                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--accent)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                      <span className="mono" style={{ color: 'var(--accent)' }}>{item.year}</span>
-                      <h3 className="text-lg font-medium" style={{ color: 'var(--text-primary)' }}>{item.title}</h3>
-                      <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{item.org}</p>
-                      <p className="body-sm">{item.description}</p>
-                      <div className="flex flex-wrap gap-1.5 pt-2">
+                      <div className="relative z-10 flex flex-col gap-1.5">
+                        <div className="flex items-start justify-between gap-3">
+                          <h3 className="text-lg md:text-xl font-bold tracking-tight text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--accent)]">
+                            {item.title}
+                          </h3>
+                          <span className="mono text-[10px] font-bold tracking-widest px-2 py-1 rounded border border-[var(--bg-border)] bg-[var(--bg-base)] group-hover:border-[var(--accent)] transition-colors duration-300 whitespace-nowrap mt-0.5" style={{ color: 'var(--accent)' }}>
+                            {item.year}
+                          </span>
+                        </div>
+                        
+                        <p className="text-xs md:text-sm font-medium text-[var(--text-secondary)]">
+                          {item.org}
+                        </p>
+                      </div>
+
+                      <div className="w-full h-px bg-[var(--bg-border)] group-hover:bg-[var(--accent-soft)] transition-colors duration-500" />
+
+                      <p className="text-xs md:text-sm leading-relaxed text-[var(--text-muted)] relative z-10 group-hover:text-[var(--text-secondary)] transition-colors duration-300">
+                        {item.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-1.5 pt-1 relative z-10">
                         {item.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-2 py-0.5 rounded text-[10px] tracking-wider uppercase"
+                            className="px-2 py-0.5 rounded text-[9px] md:text-[10px] tracking-wider uppercase font-semibold transition-all duration-300 group-hover:border-[var(--accent-soft)] group-hover:bg-[var(--accent-soft)] group-hover:text-[var(--accent)]"
                             style={{
-                              backgroundColor: 'var(--accent-soft)',
-                              color: 'var(--accent)',
+                              backgroundColor: 'var(--bg-raised)',
+                              color: 'var(--text-secondary)',
+                              border: '1px solid var(--bg-border)',
                               fontFamily: 'var(--font-geist-mono)',
                             }}
                           >

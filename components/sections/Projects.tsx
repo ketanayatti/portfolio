@@ -10,7 +10,10 @@ import ProjectBrick from '@/components/ui/ProjectBrick'
 export default function Projects() {
   const [activeWall, setActiveWall] = useState('all')
 
-  const filtered = activeWall === 'all' ? PROJECTS : PROJECTS.filter((p) => p.category === activeWall)
+  // Deduplicate projects for 'all' view while keeping category-specific filtering
+  const filtered = activeWall === 'all' 
+    ? Array.from(new Map(PROJECTS.map(p => [p.title, p])).values())
+    : PROJECTS.filter((p) => p.category === activeWall)
 
   return (
     <section id="projects" className="card-section">

@@ -50,7 +50,7 @@ export default function ProjectBrick({ id, title, github, index }: ProjectBrickP
 
         {/* Project Title */}
         <p
-          className="text-[0.65rem] tracking-wider uppercase line-clamp-1 leading-tight"
+          className="text-[0.65rem] tracking-wider uppercase leading-tight break-words"
           style={{ color: 'var(--text-muted)' }}
         >
           {title}

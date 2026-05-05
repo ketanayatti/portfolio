@@ -5,7 +5,7 @@ import { fadeUp, staggerContainer } from '@/lib/animations'
 import { PERSONAL, SKILLS } from '@/lib/constants'
 import SkillBadge from '@/components/ui/SkillBadge'
 import MagneticButton from '@/components/ui/MagneticButton'
-import { MapPin, Clock, Zap, Layers, Target } from 'lucide-react'
+import { MapPin, Clock } from 'lucide-react'
 
 export default function About() {
   return (
@@ -58,38 +58,6 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Core Expertise Areas */}
-          <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              { icon: Zap, title: 'DevOps Automation', desc: 'CI/CD pipelines, containerization, and deployment automation' },
-              { icon: Layers, title: 'Infrastructure Design', desc: 'Zero-downtime deployments, health checks, and reliability patterns' },
-              { icon: Target, title: 'Full Stack Systems', desc: 'End-to-end solutions from backend APIs to production infrastructure' },
-            ].map((item, i) => {
-              const Icon = item.icon
-              return (
-                <motion.div
-                  key={i}
-                  className="p-5 rounded-xl backdrop-blur-sm transition-all duration-300"
-                  style={{
-                    backgroundColor: 'rgba(var(--accent-soft-rgb), 0.3)',
-                    border: '1px solid var(--bg-border)',
-                  }}
-                  whileHover={{
-                    backgroundColor: 'rgba(var(--accent-soft-rgb), 0.5)',
-                    borderColor: 'var(--accent)',
-                  }}
-                >
-                  <div className="flex items-start gap-3">
-                    <Icon size={20} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px' }} />
-                    <div>
-                      <h4 className="font-bold text-sm mb-1">{item.title}</h4>
-                      <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{item.desc}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </motion.div>
 
           {/* Skills Section - Organized by Category */}
           <motion.div variants={fadeUp} className="pt-4">
