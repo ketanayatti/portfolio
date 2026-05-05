@@ -10,7 +10,7 @@ interface SkillBadgeProps {
 export default function SkillBadge({ name, delay = 0 }: SkillBadgeProps) {
   return (
     <motion.span
-      className="inline-flex items-center px-3 py-1.5 rounded-full text-xs tracking-wider"
+      className="inline-flex items-center px-3 py-1.5 rounded-full text-xs tracking-wider transition-colors duration-300 hover:bg-accent hover:text-white"
       style={{
         backgroundColor: 'var(--accent-soft)',
         color: 'var(--accent)',
@@ -24,7 +24,7 @@ export default function SkillBadge({ name, delay = 0 }: SkillBadgeProps) {
         delay: delay,
         ease: 'easeInOut',
       }}
-      whileHover={{ scale: 1.1, backgroundColor: 'var(--accent)', color: '#fff' }}
+      whileHover={{ scale: 1.1 }}
     >
       {name}
     </motion.span>

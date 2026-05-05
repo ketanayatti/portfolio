@@ -15,6 +15,9 @@ export default function Projects() {
     ? Array.from(new Map(PROJECTS.map(p => [p.title, p])).values())
     : PROJECTS.filter((p) => p.category === activeWall)
 
+  // Get total unique projects count
+  const totalUnique = Array.from(new Map(PROJECTS.map(p => [p.title, p])).values()).length
+
   return (
     <section id="projects" className="card-section">
       <div className="card-bg-container"><div className="card-bg-surface" /></div>
@@ -30,7 +33,7 @@ export default function Projects() {
         >
           {/* Header */}
           <motion.div variants={fadeUp} className="text-center mb-16">
-            <span className="mono block mb-4">03 / projects</span>
+            <span className="mono block mb-4">05 / projects</span>
             <h2 className="heading-xl mb-2">Wall of Projects</h2>
             <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
               Click a brick to visit GitHub
@@ -105,7 +108,7 @@ export default function Projects() {
             className="mt-16 text-center text-xs tracking-wider uppercase"
             style={{ color: 'var(--text-muted)' }}
           >
-            {filtered.length} brick{filtered.length !== 1 ? 's' : ''} • {PROJECTS.length} total
+            {filtered.length} brick{filtered.length !== 1 ? 's' : ''} • {totalUnique} total
           </motion.div>
         </motion.div>
       </div>

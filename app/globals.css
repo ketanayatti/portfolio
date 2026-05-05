@@ -41,8 +41,8 @@
   --text-secondary: #3E2C23;
   --text-muted: #6B5A4A;
   --accent: #2F4F2F;
-  --accent-soft: rgba(230, 239, 230, 0.15);
-  --accent-glow: rgba(63, 107, 63, 0.35);
+  --accent-soft: rgba(47, 79, 47, 0.15);
+  --accent-glow: rgba(47, 79, 47, 0.35);
   --noise-opacity: 0.02;
 }
 

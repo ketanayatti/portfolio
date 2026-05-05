@@ -29,7 +29,7 @@ export default function Journey() {
           viewport={{ once: true, margin: '-100px' }}
         >
           <motion.div variants={fadeUp} className="text-center mb-20">
-            <span className="mono block mb-4">02 / journey</span>
+            <span className="mono block mb-4">04 / journey</span>
             <h2 className="heading-xl">My Journey</h2>
           </motion.div>
 

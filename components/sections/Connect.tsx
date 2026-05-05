@@ -30,7 +30,7 @@ export default function Connect() {
           viewport={{ once: true, margin: '-100px' }}
         >
           <motion.div variants={fadeUp} className="text-center mb-16">
-            <span className="mono block mb-4">06 / connect</span>
+            <span className="mono block mb-4">08 / connect</span>
             <h2 className="heading-xl mb-4">Let&apos;s Connect</h2>
             <p className="body-lg max-w-lg mx-auto">
               Have a project in mind or just want to say hello? I&apos;d love to hear from you.

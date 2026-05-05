@@ -35,7 +35,7 @@ export default function Philosophy() {
           {/* Left Side: Accordion */}
           <div className="flex flex-col gap-5">
             <motion.div variants={fadeUp} className="mb-2 text-center md:text-left">
-              <span className="mono block mb-4">04 / philosophy</span>
+              <span className="mono block mb-4">06 / philosophy</span>
               <h2 className="heading-xl">How I think about building</h2>
             </motion.div>
 

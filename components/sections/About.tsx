@@ -34,16 +34,16 @@ export default function About() {
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
                 {PERSONAL.available && (
-                  <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full backdrop-blur-sm" style={{ backgroundColor: 'rgba(var(--accent-soft-rgb), 0.5)', border: '1px solid var(--bg-border)' }}>
-                    <span className="w-1.5 h-1.5 rounded-full pulse-dot" style={{ backgroundColor: 'var(--green)' }} />
-                    <span className="text-xs font-medium" style={{ color: 'var(--green)' }}>Available for Opportunities</span>
+                  <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full backdrop-blur-sm" style={{ backgroundColor: 'var(--accent-soft)', border: '1px solid var(--bg-border)' }}>
+                    <span className="w-1.5 h-1.5 rounded-full pulse-dot" style={{ backgroundColor: 'var(--accent)' }} />
+                    <span className="text-xs font-medium" style={{ color: 'var(--accent)' }}>Available for Opportunities</span>
                   </div>
                 )}
-                <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full backdrop-blur-sm text-xs font-medium" style={{ backgroundColor: 'rgba(var(--accent-soft-rgb), 0.5)', border: '1px solid var(--bg-border)', color: 'var(--text-secondary)' }}>
+                <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full backdrop-blur-sm text-xs font-medium" style={{ backgroundColor: 'var(--accent-soft)', border: '1px solid var(--bg-border)', color: 'var(--accent)' }}>
                   <MapPin size={13} strokeWidth={2} />
                   <span>{PERSONAL.location}</span>
                 </div>
-                <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full backdrop-blur-sm text-xs font-medium" style={{ backgroundColor: 'rgba(var(--accent-soft-rgb), 0.5)', border: '1px solid var(--bg-border)', color: 'var(--text-secondary)' }}>
+                <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full backdrop-blur-sm text-xs font-medium" style={{ backgroundColor: 'var(--accent-soft)', border: '1px solid var(--bg-border)', color: 'var(--accent)' }}>
                   <Clock size={13} strokeWidth={2} />
                   <span>{PERSONAL.timezone}</span>
                 </div>

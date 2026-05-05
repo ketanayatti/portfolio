@@ -220,58 +220,53 @@ export const TERMINAL_COMMANDS: Record<string, string> = {
 │  ${PERSONAL.available ? '🟢 Open to opportunities' : '🔴 Not available'}
 └─────────────────────────────┘`,
   skills: `CORE SKILLS:
-  ► Backend:  Node.js, Express.js, Python, FastAPI, REST APIs
-  ► Frontend: React.js, TypeScript, Tailwind CSS
-  ► DevOps:   Docker, Kubernetes, AWS, Linux, CI/CD
-  ► Tools:    Git, GitHub, Jenkins, Postman, Docker Hub
-  ► Database: MongoDB, PostgreSQL
-  ► Other:    Socket.io, Bash Scripting, NGINX, Load Balancing`,
+  ► DevOps & Infrastructure: Docker, Docker Compose, Jenkins, GitHub Actions, AWS (EC2, VPC, IAM, S3, CloudWatch), NGINX, Blue-Green Deployment, Linux, Bash Scripting
+  ► Backend: Node.js, Express.js, FastAPI, Python, REST APIs, WebSockets, Socket.io, JWT Authentication
+  ► Frontend: React.js, TypeScript, Tailwind CSS, Next.js
+  ► Databases: MongoDB, Redis, MySQL
+  ► Tools: Git, GitHub, Postman, Docker Hub, VS Code, CI/CD Pipelines`,
   experience: `PROFESSIONAL JOURNEY:
   
-  → DevOps Engineer & Full Stack Developer
-    - Infrastructure automation & deployment pipelines
-    - Containerization & orchestration
-    - API development & microservices
-    - Cloud deployment & AWS services
-    
-  UPDATE THIS SECTION with your actual experience details
-  in the JOURNEY constant configuration.`,
+  → ${JOURNEY[0].year} | ${JOURNEY[0].title} @ ${JOURNEY[0].org}
+    ${JOURNEY[0].description}
+    Tech: ${JOURNEY[0].tags.join(', ')}
+  
+  → ${JOURNEY[1].year} | ${JOURNEY[1].title} @ ${JOURNEY[1].org}
+    ${JOURNEY[1].description}
+    Tech: ${JOURNEY[1].tags.join(', ')}`,
   'tech-stack': `TECHNOLOGY STACK:
   
-  Backend:        Node.js, Express, Python, FastAPI
-  Frontend:       React, TypeScript, Tailwind CSS
-  DevOps:         Docker, NGINX, Linux
-  Cloud:          AWS EC2, AWS Services
-  Databases:      MongoDB, PostgreSQL
-  Tools:          Git, Jenkins, Postman
-  Containerized:  Docker, Docker Compose
-  Monitoring:     Health Checks, Prometheus
-  Version Control: GitHub, Git`,
-  projects: `FEATURED PROJECTS:
+  Backend:            Node.js, Express, FastAPI, Python
+  Frontend:           React, TypeScript, Tailwind CSS, Next.js
+  DevOps & Cloud:     Docker, Docker Compose, Jenkins, AWS EC2, NGINX, Linux, Bash
+  Databases:          MongoDB, Redis, MySQL
+  Deployment:         Blue-Green, Zero-Downtime, Health Checks, Auto-Rollback
+  Tools:              Git, GitHub, Postman, Docker Hub, VS Code
+  Monitoring:         CloudWatch, Health Checks, System Monitoring`,
+  projects: `FEATURED PROJECTS (${PROJECTS.length} total):
   
-  1. Self-Hosted AIOps Agent
-     → Reduced operational overhead by 70%
-     → Tech: Python, FastAPI, AWS EC2, llama.cpp
-     
-  2. Autonomous Self-Healing Deployment
-     → Zero-downtime deployments with auto-rollback
-     → Tech: Docker, NGINX, Bash, Linux
-     
-  3. AI Mock Interview Platform
-     → Production CI/CD pipeline
-     → Tech: Jenkins, Docker, AWS, Node.js, MongoDB
-     
-  4. Communication Platform
-     → Real-time platform with 10K+ message support
-     → Tech: React, Node.js, Socket.io, Docker
-     
+  1. AI Mock Interview Platform with Automated CI/CD Deployment
+     → Fully automated CI/CD pipeline with Jenkins & GitHub webhooks
+     → Blue-Green deployment on AWS EC2 with zero downtime
+     → Tech: Jenkins, Docker, AWS EC2, NGINX, Node.js, MongoDB
+  
+  2. Enterprise Real-Time Collaboration Platform (Communiatec)
+     → Scalable backend handling thousands of WebSocket connections
+     → Full DevOps pipeline: Docker, Jenkins, AWS EC2
+     → Tech: React, Node.js, Socket.io, Docker, Jenkins
+  
+  3. Self-Hosted AIOps Agent on AWS
+     → On-instance LLM inference with llama.cpp
+     → System monitoring, controlled execution, REST endpoints
+     → Tech: AWS EC2, FastAPI, Python, LLM, System Monitoring
+  
   Use "projects" on portfolio to see all work →`,
   contact: `CONTACT INFORMATION:
   
   📧 Email:    ${SOCIAL.email}
   🔗 GitHub:   ${SOCIAL.github}
   💼 LinkedIn: ${SOCIAL.linkedin}
-  🐦 Twitter:  ${SOCIAL.twitter}
+  ${SOCIAL.twitter ? '🐦 Twitter:  ' + SOCIAL.twitter : ''}
   
   Feel free to reach out! I'm always open to interesting
   conversations and new opportunities.`,
@@ -297,21 +292,7 @@ TIMEZONE:    ${PERSONAL.timezone}
 STATUS:      ${PERSONAL.available ? '🟢 Open to Opportunities' : '🔴 Not Available'}
 BIO:         ${PERSONAL.bio}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📊 EXPERTISE:
-  • Full Stack Development
-  • DevOps & Infrastructure
-  • Cloud Architecture
-  • Microservices
-  • API Design
-  • Automation
-
-🔗 CONNECTIONS:
-  GitHub:   ${SOCIAL.github}
-  LinkedIn: ${SOCIAL.linkedin}
-  Email:    ${SOCIAL.email}
-Full Resume: ${SOCIAL.resume}`,
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
 }
 
 export const PROJECT_CATEGORIES = [

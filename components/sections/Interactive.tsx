@@ -16,6 +16,7 @@ function TerminalEmulator() {
   ])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [requiresClick, setRequiresClick] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -24,6 +25,13 @@ function TerminalEmulator() {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
   }, [lines])
+
+  const handleOutputClick = () => {
+    if (requiresClick && !isTyping) {
+      setRequiresClick(false)
+      inputRef.current?.focus()
+    }
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,6 +43,7 @@ function TerminalEmulator() {
 
     if (cmd === 'clear') {
       setLines([])
+      setRequiresClick(false)
       return
     }
 
@@ -59,6 +68,7 @@ function TerminalEmulator() {
         setTimeout(typeChar, 3)
       } else {
         setIsTyping(false)
+        setRequiresClick(true)
       }
     }
     
@@ -81,9 +91,9 @@ function TerminalEmulator() {
       {/* Terminal body */}
       <div
         ref={scrollRef}
-        className="p-4 h-96 overflow-y-auto text-sm leading-relaxed scrollbar-hide"
-        style={{ backgroundColor: 'var(--bg-base)', scrollbarWidth: 'none' }}
-        onClick={() => inputRef.current?.focus()}
+        className="p-4 h-96 overflow-y-auto text-sm leading-relaxed"
+        style={{ backgroundColor: 'var(--bg-base)', scrollbarWidth: 'auto' }}
+        onClick={handleOutputClick}
       >
         {lines.map((line, i) => (
           <div key={i} className="mb-2" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
@@ -95,6 +105,13 @@ function TerminalEmulator() {
           </div>
         ))}
 
+        {/* Click prompt when output requires click */}
+        {requiresClick && !isTyping && (
+          <div className="mb-2 text-[0.65rem] opacity-50 animate-pulse" style={{ color: 'var(--text-muted)' }}>
+            [Click to continue...]
+          </div>
+        )}
+
         {/* Input line */}
         <form onSubmit={handleSubmit} className="flex items-center gap-1">
           <span style={{ color: 'var(--accent)' }}>$ </span>
@@ -104,7 +121,7 @@ function TerminalEmulator() {
             onChange={(e) => setInput(e.target.value)}
             className="flex-1 bg-transparent outline-none text-sm"
             style={{ color: 'var(--text-primary)', caretColor: 'var(--accent)' }}
-            disabled={isTyping}
+            disabled={isTyping || requiresClick}
             autoComplete="off"
             spellCheck={false}
           />
@@ -130,7 +147,7 @@ export default function Interactive() {
           viewport={{ once: true, margin: '-100px' }}
         >
           <motion.div variants={fadeUp} className="text-center mb-12">
-            <span className="mono block mb-4">05 / playground</span>
+            <span className="mono block mb-4">07 / playground</span>
             <h2 className="heading-xl mb-4">Interactive Terminal</h2>
             <p className="body-lg max-w-lg mx-auto">
               Try typing a command below. Start with <span className="mono" style={{ color: 'var(--accent)' }}>help</span>
