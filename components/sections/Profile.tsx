@@ -68,7 +68,6 @@ export default function Profile() {
     ...accentColors,
   }))
   const [direction, setDirection] = useState<1 | -1>(1)
-  const total = PROFILE_CARDS.length
 
   const slideVariants = {
     enter: (dir: number) => ({
@@ -198,7 +197,7 @@ export default function Profile() {
 /* ─── Single Card ───────────────────────────────────────── */
 
 interface ProfileCardProps {
-  card: (typeof PROFILE_CARDS)[number]
+  card: (typeof PROFILE_CARDS_BASE)[number] & ReturnType<typeof getAccentColors>
   isActive: boolean
   onClick: () => void
 }
