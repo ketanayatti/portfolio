@@ -19,7 +19,7 @@ export default function Philosophy() {
         <div className="section-number">06</div>
 
         {/* 3D Orb positioned visually on the right half */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full md:w-1/2 h-[800px] pointer-events-none opacity-40 md:opacity-80">
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full md:w-1/2 h-[400px] md:h-[800px] pointer-events-none opacity-40 md:opacity-80">
           <Suspense fallback={null}>
             <GeometryOrb />
           </Suspense>

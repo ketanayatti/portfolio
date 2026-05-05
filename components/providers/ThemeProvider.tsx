@@ -22,10 +22,16 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setMounted(true)
+    // Set dark theme immediately
+    document.documentElement.setAttribute('data-theme', 'dark')
+    
     const stored = localStorage.getItem('theme') as Theme | null
     if (stored) {
       setTheme(stored)
       document.documentElement.setAttribute('data-theme', stored)
+    } else {
+      // Default to dark theme
+      localStorage.setItem('theme', 'dark')
     }
   }, [])
 

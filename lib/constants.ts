@@ -216,12 +216,16 @@ export const ROLES = [
 
 export const TERMINAL_COMMANDS: Record<string, string> = {
   help: `Available commands:
-  whoami     — About me
-  skills     — Technical skills
-  projects   — Featured projects
-  contact    — Get in touch
-  hire       — Why hire me
-  clear      — Clear terminal`,
+  whoami      — About me
+  profile     — Full profile
+  skills      — Technical skills
+  experience  — Work experience
+  projects    — Featured projects
+  tech-stack  — Technology stack
+  contact     — Get in touch
+  resume      — Download resume
+  github      — GitHub profile
+  clear       — Clear terminal`,
   whoami: `┌─────────────────────────────┐
 │  ${PERSONAL.name}
 │  ${PERSONAL.tagline}
@@ -229,24 +233,101 @@ export const TERMINAL_COMMANDS: Record<string, string> = {
 │  🕐 ${PERSONAL.timezone}
 │  ${PERSONAL.available ? '🟢 Open to opportunities' : '🔴 Not available'}
 └─────────────────────────────┘`,
-  skills: `Your skills go here. Update in .env.local or SKILLS constant.
+  skills: `CORE SKILLS:
+  ► Backend:  Node.js, Express.js, Python, FastAPI, REST APIs
+  ► Frontend: React.js, TypeScript, Tailwind CSS
+  ► DevOps:   Docker, Kubernetes, AWS, Linux, CI/CD
+  ► Tools:    Git, GitHub, Jenkins, Postman, Docker Hub
+  ► Database: MongoDB, PostgreSQL
+  ► Other:    Socket.io, Bash Scripting, NGINX, Load Balancing`,
+  experience: `PROFESSIONAL JOURNEY:
   
-Customize your skill categories and technologies to match your experience.
-This terminal message is dynamically generated from TERMINAL_COMMANDS.`,
-  projects: `Featured projects will display here.
+  → DevOps Engineer & Full Stack Developer
+    - Infrastructure automation & deployment pipelines
+    - Containerization & orchestration
+    - API development & microservices
+    - Cloud deployment & AWS services
+    
+  UPDATE THIS SECTION with your actual experience details
+  in the JOURNEY constant configuration.`,
+  'tech-stack': `TECHNOLOGY STACK:
   
-Update project information in PROJECTS constant with your actual repositories.
-Currently showing placeholder URLs - update with real GitHub links.`,
-  contact: `📧 ${SOCIAL.email}
-🔗 ${SOCIAL.github}
-💼 ${SOCIAL.linkedin}
-🐦 ${SOCIAL.twitter}`,
-  hire: `Why work with me?
+  Backend:        Node.js, Express, Python, FastAPI
+  Frontend:       React, TypeScript, Tailwind CSS
+  DevOps:         Docker, NGINX, Linux
+  Cloud:          AWS EC2, AWS Services
+  Databases:      MongoDB, PostgreSQL
+  Tools:          Git, Jenkins, Postman
+  Containerized:  Docker, Docker Compose
+  Monitoring:     Health Checks, Prometheus
+  Version Control: GitHub, Git`,
+  projects: `FEATURED PROJECTS:
+  
+  1. Self-Hosted AIOps Agent
+     → Reduced operational overhead by 70%
+     → Tech: Python, FastAPI, AWS EC2, llama.cpp
+     
+  2. Autonomous Self-Healing Deployment
+     → Zero-downtime deployments with auto-rollback
+     → Tech: Docker, NGINX, Bash, Linux
+     
+  3. AI Mock Interview Platform
+     → Production CI/CD pipeline
+     → Tech: Jenkins, Docker, AWS, Node.js, MongoDB
+     
+  4. Communication Platform
+     → Real-time platform with 10K+ message support
+     → Tech: React, Node.js, Socket.io, Docker
+     
+  Use "projects" on portfolio to see all work →`,
+  contact: `CONTACT INFORMATION:
+  
+  📧 Email:    ${SOCIAL.email}
+  🔗 GitHub:   ${SOCIAL.github}
+  💼 LinkedIn: ${SOCIAL.linkedin}
+  🐦 Twitter:  ${SOCIAL.twitter}
+  
+  Feel free to reach out! I'm always open to interesting
+  conversations and new opportunities.`,
+  resume: `📄 Resume Download:
+  
+  ${SOCIAL.resume}
+  
+  My resume contains detailed information about my
+  experience, skills, and project contributions.`,
+  github: `🐙 GitHub Profile:
+  
+  ${SOCIAL.github}
+  
+  Check out my repositories and open source contributions!`,
+  profile: `╔════════════════════════════════════╗
+║       COMPLETE PROFILE               ║
+╚════════════════════════════════════╝
 
-Update this section with your unique value proposition.
-Customize in TERMINAL_COMMANDS constant with your strengths.
+NAME:        ${PERSONAL.name}
+TITLE:       ${PERSONAL.tagline}
+LOCATION:    ${PERSONAL.location}
+TIMEZONE:    ${PERSONAL.timezone}
+STATUS:      ${PERSONAL.available ? '🟢 Open to Opportunities' : '🔴 Not Available'}
+BIO:         ${PERSONAL.bio}
 
-Let's talk → ${SOCIAL.email}`,
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 EXPERTISE:
+  • Full Stack Development
+  • DevOps & Infrastructure
+  • Cloud Architecture
+  • Microservices
+  • API Design
+  • Automation
+
+🔗 CONNECTIONS:
+  GitHub:   ${SOCIAL.github}
+  LinkedIn: ${SOCIAL.linkedin}
+  Email:    ${SOCIAL.email}
+  Twitter:  ${SOCIAL.twitter}
+
+Full Resume: ${SOCIAL.resume}`,
 }
 
 export const PROJECT_CATEGORIES = [

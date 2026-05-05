@@ -67,7 +67,7 @@ export default function RightSlider() {
 
   return (
     <motion.aside
-      className="fixed right-0 top-0 h-screen z-[100] flex flex-col items-center justify-between py-6"
+      className="fixed right-0 top-0 h-screen z-[100] hidden md:flex flex-col items-center justify-between py-6"
       style={{
         width: hovered ? 200 : 48,
         backgroundColor: hovered ? 'var(--bg-surface)' : 'transparent',

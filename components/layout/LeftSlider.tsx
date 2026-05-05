@@ -37,7 +37,7 @@ export default function LeftSlider() {
 
   return (
     <motion.nav
-      className="fixed left-0 top-0 h-screen z-[100] flex flex-col items-center justify-center"
+      className="fixed left-0 top-0 h-screen z-[100] hidden md:flex flex-col items-center justify-center"
       style={{
         width: hovered ? 180 : 48,
         backgroundColor: hovered ? 'var(--bg-surface)' : 'transparent',

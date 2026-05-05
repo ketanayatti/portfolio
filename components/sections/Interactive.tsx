@@ -38,30 +38,31 @@ function TerminalEmulator() {
       return
     }
 
-    const response = TERMINAL_COMMANDS[cmd] || `Command not found: ${cmd}. Type "help" for available commands.`
+    const response =
+      TERMINAL_COMMANDS[cmd] ||
+      `Command not found: ${cmd}. Type "help" for available commands.`
+
+    // Add empty output line first
+    setLines((prev) => [...prev, { type: 'output', content: '' }])
 
     setIsTyping(true)
-    // Simulate typing
     let charIdx = 0
+    
     const typeChar = () => {
+      charIdx++
       if (charIdx <= response.length) {
         setLines((prev) => {
           const updated = [...prev]
-          const lastLine = updated[updated.length - 1]
-          if (lastLine?.type === 'output' && charIdx > 0) {
-            updated[updated.length - 1] = { type: 'output', content: response.slice(0, charIdx) }
-          } else {
-            updated.push({ type: 'output', content: response.slice(0, charIdx) })
-          }
+          updated[updated.length - 1] = { type: 'output', content: response.slice(0, charIdx) }
           return updated
         })
-        charIdx++
-        setTimeout(typeChar, 5)
+        setTimeout(typeChar, 3)
       } else {
         setIsTyping(false)
       }
     }
-    setTimeout(typeChar, 200)
+    
+    setTimeout(typeChar, 150)
   }
 
   return (
@@ -80,12 +81,12 @@ function TerminalEmulator() {
       {/* Terminal body */}
       <div
         ref={scrollRef}
-        className="p-4 h-80 overflow-y-auto text-sm leading-relaxed"
-        style={{ backgroundColor: 'var(--bg-base)' }}
+        className="p-4 h-96 overflow-y-auto text-sm leading-relaxed scrollbar-hide"
+        style={{ backgroundColor: 'var(--bg-base)', scrollbarWidth: 'none' }}
         onClick={() => inputRef.current?.focus()}
       >
         {lines.map((line, i) => (
-          <div key={i} className="mb-1" style={{ whiteSpace: 'pre-wrap' }}>
+          <div key={i} className="mb-2" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
             {line.type === 'input' ? (
               <span style={{ color: 'var(--accent)' }}>{line.content}</span>
             ) : (
@@ -95,13 +96,13 @@ function TerminalEmulator() {
         ))}
 
         {/* Input line */}
-        <form onSubmit={handleSubmit} className="flex items-center">
+        <form onSubmit={handleSubmit} className="flex items-center gap-1">
           <span style={{ color: 'var(--accent)' }}>$ </span>
           <input
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-1 bg-transparent outline-none text-sm ml-1"
+            className="flex-1 bg-transparent outline-none text-sm"
             style={{ color: 'var(--text-primary)', caretColor: 'var(--accent)' }}
             disabled={isTyping}
             autoComplete="off"

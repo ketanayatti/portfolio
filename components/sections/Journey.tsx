@@ -76,7 +76,7 @@ export default function Journey() {
                   </motion.div>
 
                   {/* Card */}
-                  <div className={`ml-12 md:ml-0 md:w-[45%] ${isLeft ? 'md:pr-12' : 'md:pl-12'} ${isLeft ? '' : 'md:ml-auto'}`}>
+                  <div className={`flex-1 ml-12 md:flex-none md:ml-0 md:w-[45%] ${isLeft ? 'md:pr-12' : 'md:pl-12'} ${isLeft ? '' : 'md:ml-auto'}`}>
                     <div className="glass-card p-6 space-y-3 relative overflow-hidden group">
                       {/* Hover glow effect on card */}
                       <div className="absolute inset-0 bg-gradient-to-tr from-[var(--accent-soft)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

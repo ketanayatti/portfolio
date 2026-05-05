@@ -33,16 +33,16 @@
 }
 
 [data-theme='light'] {
-  --bg-base: #faf9ff;
-  --bg-surface: #fdfcff;
-  --bg-raised: #f3f1fe;
-  --bg-border: rgba(0, 0, 0, 0.05);
-  --text-primary: #0f0e1a;
-  --text-secondary: #5c5b73;
-  --text-muted: #a0a0b8;
-  --accent: #6c5ce7;
-  --accent-soft: rgba(108, 92, 231, 0.1);
-  --accent-glow: rgba(108, 92, 231, 0.25);
+  --bg-base: #C4A484;
+  --bg-surface: #D2B49C;
+  --bg-raised: #E0C3A3;
+  --bg-border: #B08A6A;
+  --text-primary: #000000;
+  --text-secondary: #3E2C23;
+  --text-muted: #6B5A4A;
+  --accent: #2F4F2F;
+  --accent-soft: rgba(230, 239, 230, 0.15);
+  --accent-glow: rgba(63, 107, 63, 0.35);
   --noise-opacity: 0.02;
 }
 
@@ -64,6 +64,8 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 body {
@@ -509,4 +511,144 @@ main {
   border-radius: 0;
   border-top: none;
   box-shadow: none;
+}
+
+/* ═══════════════════════════════════════
+   ENHANCED SMOOTH SCROLL ANIMATIONS
+   ═══════════════════════════════════════ */
+
+@keyframes smooth-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes smooth-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes smooth-slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes smooth-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes smooth-rotate-in {
+  from {
+    opacity: 0;
+    transform: rotate(-5deg) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* Global smooth transitions */
+* {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth transitions for interactive elements */
+button, a, input, textarea, select {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover, a:hover {
+  transition-duration: 0.15s;
+}
+
+/* Enhanced glass-card transitions */
+.glass-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transition-duration: 0.25s;
+}
+
+/* Smooth scroll for anchor links */
+a[href^="#"] {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced momentum scrolling on mobile */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Optimized animations for mobile */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Webkit scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-glow);
+}
+
+/* Hide scrollbar for specific elements */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
+}
+
+/* Hide main page scrollbar */
+html::-webkit-scrollbar {
+  display: none;
 }

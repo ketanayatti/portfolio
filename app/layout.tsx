@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 import ThemeProvider from '@/components/providers/ThemeProvider'
+import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider'
 import Preloader from '@/components/layout/Preloader'
 
 const geistSans = localFont({
@@ -42,10 +43,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider>
-          <div className="noise-overlay" />
-          <Preloader>
-            {children}
-          </Preloader>
+          <SmoothScrollProvider>
+            <div className="noise-overlay" />
+            <Preloader>
+              {children}
+            </Preloader>
+          </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>
