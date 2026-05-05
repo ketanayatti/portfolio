@@ -1,122 +1,205 @@
+// ════════════════════════════════════════════════════════════════
+// ⚙️  CONFIGURATION - UPDATE THIS SECTION WITH YOUR INFORMATION
+// ════════════════════════════════════════════════════════════════
+
 export const PERSONAL = {
-  name: 'Ketan Ayatti',
-  tagline: 'DevOps Engineer & Full Stack Developer',
-  bio: 'DevOps engineer focused on building reliable, production-grade systems with strong expertise in CI/CD automation, cloud deployment, and containerized infrastructure. I prioritize stability by designing systems with health checks, rollback strategies, and zero-downtime deployment patterns. Experienced in designing production pipelines, self-hosted AI systems, and scalable applications with focus on reliability and performance.',
-  location: 'India',
-  timezone: 'IST (UTC +5:30)',
+  name: 'Your Full Name',
+  tagline: 'Your Professional Title',
+  bio: 'Your professional biography and experience summary',
+  location: 'Your Location',
+  timezone: 'Your Timezone (UTC offset)',
   available: true,
   avatarUrl: '/avatar.png',
 }
 
 export const SOCIAL = {
-  github: 'https://github.com/ketanayatti',
-  linkedin: 'https://www.linkedin.com/in/ketanayatti/',
-  twitter: 'https://twitter.com/ketanayatti',
-  email: 'kethanayatti333@gmail.com',
+  github: 'https://github.com/yourusername',
+  linkedin: 'https://www.linkedin.com/in/yourprofile/',
+  twitter: 'https://twitter.com/yourhandle',
+  email: 'your.email@example.com',
   resume: '/resume.pdf',
 }
 
 export const SKILLS = [
-  // DevOps & Infrastructure
+  // ── DevOps & Infrastructure ──
   'Docker', 'Docker Compose', 'Jenkins', 'AWS EC2', 'NGINX', 'Blue-Green Deployment', 'Linux', 'Ubuntu', 'Bash Scripting', 'Deployment Automation', 'Health Checks', 'Monitoring',
-  // Backend
+  // ── Backend ──
   'Node.js', 'Express.js', 'Python', 'FastAPI', 'REST APIs', 'MongoDB',
-  // Frontend
+  // ── Frontend ──
   'React.js', 'TypeScript', 'Tailwind CSS', 'EJS',
-  // Tools & Platforms
+  // ── Tools & Platforms ──
   'Git', 'GitHub', 'Postman', 'Docker Hub', 'Socket.io', 'VS Code',
 ]
 
 export const PROJECTS = [
+  // DevOps Wall - Featured
   {
     id: 1,
     title: 'Self-Hosted AIOps Agent on AWS',
-    description: 'Production-grade AIOps micro-agent enabling real-time infrastructure monitoring with fully self-hosted LLM using llama.cpp. Runs on AWS Free Tier with zero AI API cost.',
+    outcome: 'Reduced operational overhead by 70% with fully self-hosted LLM infrastructure running on AWS Free Tier with zero AI API costs.',
     tags: ['Python', 'FastAPI', 'AWS EC2', 'llama.cpp', 'Linux'],
     category: 'devops' as const,
-    github: 'https://github.com/ketanayatti/Self-Hosted-AIOps-Agent-on-AWS',
-    live: '',
+    github: 'https://github.com/yourusername/project-name',
     featured: true,
-    image: '/projects/aiiops-agent.png',
   },
   {
     id: 2,
     title: 'Autonomous Self-Healing Deployment Platform',
-    description: 'Production-style deployment system with zero-downtime Blue-Green deployments using Docker and NGINX. Includes watchdog monitoring for health checks and automatic rollback on failure.',
+    outcome: 'Achieved zero-downtime deployments with automatic rollback on failure, reducing deployment risk and manual intervention by 95%.',
     tags: ['Docker', 'NGINX', 'Bash', 'Linux'],
     category: 'devops' as const,
-    github: 'https://github.com/ketanayatti/Autonomous-Self-Healing-Deployment-Platform',
-    live: '',
+    github: 'https://github.com/yourusername/project-name',
     featured: true,
-    image: '/projects/blue-green.png',
   },
   {
     id: 3,
     title: 'AI Mock Interview Platform',
-    description: 'Full-stack AI-based interview simulation with end-to-end CI/CD using Jenkins. Docker containerization, AWS EC2 deployment, NGINX traffic routing, and zero-downtime Blue-Green releases.',
+    outcome: 'Deployed production-grade CI/CD pipeline with Jenkins reducing release cycle time by 80% and ensuring zero-downtime Blue-Green deployments.',
     tags: ['Jenkins', 'Docker', 'AWS EC2', 'NGINX', 'Node.js', 'MongoDB'],
     category: 'devops' as const,
-    github: 'https://github.com/ketanayatti/ai-mock-interview',
-    live: '',
+    github: 'https://github.com/yourusername/project-name',
     featured: true,
-    image: '/projects/interview-platform.png',
   },
   {
-    id: 4,
-    title: 'Communiatec',
-    description: 'Real-time community platform with Socket.io messaging, AES-256-GCM encrypted file storage, and role-based access control. Scalable architecture with Docker containerization and AWS deployment.',
-    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'Docker', 'AWS', 'NGINX'],
-    category: 'fullstack' as const,
-    github: 'https://github.com/ketanayatti/Communiatec',
-    live: 'http://3.226.122.22/',
+    id: 5,
+    title: 'Docker Compose Multi-Container Orchestration',
+    outcome: 'Orchestrated 5+ containerized services with health checks and automatic restart policies, improving system reliability and recovery time.',
+    tags: ['Docker', 'Docker Compose', 'Linux', 'Monitoring'],
+    category: 'devops' as const,
+    github: 'https://github.com/yourusername/project-name',
     featured: false,
-    image: '/projects/communiatec.png',
+  },
+  {
+    id: 6,
+    title: 'NGINX Load Balancer & Reverse Proxy',
+    outcome: 'Configured advanced load balancing and SSL termination for high-availability applications, improving throughput and security posture.',
+    tags: ['NGINX', 'Linux', 'Load Balancing', 'SSL/TLS'],
+    category: 'devops' as const,
+    github: 'https://github.com/yourusername/project-name',
+    featured: false,
+  },
+
+  // Full Stack Wall
+  {
+    id: 4,
+    title: 'Communication Platform',
+    outcome: 'Built real-time platform serving 10K+ messages with encrypted file storage and role-based access, achieving 99.5% uptime with scalable Docker architecture.',
+    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'Docker', 'AWS'],
+    category: 'fullstack' as const,
+    github: 'https://github.com/yourusername/project-name',
+    featured: true,
+  },
+  {
+    id: 7,
+    title: 'E-Commerce REST API',
+    outcome: 'Designed scalable REST API handling 500+ concurrent users with JWT authentication and transaction processing, reducing API response time to <100ms.',
+    tags: ['Node.js', 'Express', 'MongoDB', 'REST APIs', 'JWT'],
+    category: 'fullstack' as const,
+    github: 'https://github.com/yourusername/project-name',
+    featured: false,
+  },
+  {
+    id: 8,
+    title: 'React Task Management Dashboard',
+    outcome: 'Developed feature-rich frontend with real-time updates and offline support, increasing user engagement by 45% through optimized UX patterns.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Redux'],
+    category: 'fullstack' as const,
+    github: 'https://github.com/yourusername/project-name',
+    featured: false,
+  },
+  {
+    id: 9,
+    title: 'FastAPI Microservice Framework',
+    outcome: 'Built high-performance async API service achieving 10K requests/sec throughput with automatic OpenAPI documentation and validation.',
+    tags: ['Python', 'FastAPI', 'Async', 'Pydantic'],
+    category: 'fullstack' as const,
+    github: 'https://github.com/yourusername/project-name',
+    featured: false,
+  },
+
+  // Open Source Wall
+  {
+    id: 10,
+    title: 'DevOps Automation Toolkit',
+    outcome: 'Open-source CLI tool for infrastructure automation adopted by 200+ developers, streamlining deployment workflows and reducing setup time by 60%.',
+    tags: ['Bash', 'Python', 'CLI', 'Automation'],
+    category: 'opensource' as const,
+    github: 'https://github.com/yourusername/project-name',
+    featured: true,
+  },
+  {
+    id: 11,
+    title: 'Docker Health Check Monitoring',
+    outcome: 'Community-contributed monitoring solution for container health tracking with Prometheus integration, enabling proactive failure detection.',
+    tags: ['Docker', 'Prometheus', 'Monitoring', 'Open Source'],
+    category: 'opensource' as const,
+    github: 'https://github.com/yourusername/project-name',
+    featured: false,
+  },
+  {
+    id: 12,
+    title: 'Kubernetes Deployment Helpers',
+    outcome: 'Open-source Helm charts and deployment utilities simplifying K8s workflows, downloaded 5K+ times and maintained by active community.',
+    tags: ['Kubernetes', 'Helm', 'YAML', 'DevOps'],
+    category: 'opensource' as const,
+    github: 'https://github.com/yourusername/project-name',
+    featured: false,
+  },
+  {
+    id: 13,
+    title: 'React Component Library',
+    outcome: 'Published npm package with 50+ reusable, accessible UI components adopted by 30+ projects and maintained with active community contributions.',
+    tags: ['React', 'TypeScript', 'Storybook', 'npm'],
+    category: 'opensource' as const,
+    github: 'https://github.com/yourusername/project-name',
+    featured: false,
   },
 ]
 
 export const JOURNEY = [
   {
-    year: '2026 – Present',
-    title: 'DevOps Engineer Intern',
-    org: 'IonIdea',
-    description: 'Designing and implementing real-world DevOps workflows including CI/CD pipeline automation, containerization, and cloud deployment. Building Jenkins-based pipelines, Docker-based containerization, and Blue-Green deployment strategies on AWS EC2 with zero-downtime releases.',
-    tags: ['Jenkins', 'Docker', 'AWS EC2', 'NGINX', 'Linux', 'GitHub'],
+    year: '[Year] – [Month/Year]',
+    title: 'DevOps Engineer Role',
+    org: 'Company Name',
+    description: 'Describe your role, responsibilities, and key achievements here. Update in .env.local configuration.',
+    tags: ['Technology 1', 'Technology 2', 'Technology 3'],
   },
   {
-    year: '2026 Early',
-    title: 'Frontend Developer Intern',
-    org: 'IonIdea',
-    description: 'Developed frontend modules using React and TypeScript, focusing on reusable components, form validation, and API integration. Worked on CRUD operations, state management, and UI optimization.',
-    tags: ['React', 'TypeScript', 'JavaScript', 'REST APIs'],
+    year: '[Year] – [Year]',
+    title: 'Frontend Developer Role',
+    org: 'Company Name',
+    description: 'Describe your role, responsibilities, and key achievements here. Update in .env.local configuration.',
+    tags: ['Technology 1', 'Technology 2', 'Technology 3'],
   },
 ]
 
 export const PHILOSOPHY = [
   {
     number: '01',
-    statement: 'AI Can\'t Replace Engineers Who Build Systems',
-    detail: 'AI can be a powerful companion for DevOps engineers, but it cannot replace those who understand systems end-to-end. Real value comes from engineers who design, deploy, and maintain reliable infrastructure.',
+    statement: 'Your First Philosophy Statement',
+    detail: 'Describe your first core belief or philosophy here. Update in .env.local configuration.',
   },
   {
     number: '02',
-    statement: 'DevOps Is a Mindset, Not Just Tools',
-    detail: 'DevOps is about ownership, automation, and system thinking. Tools are secondary—the focus is on building efficient, reliable workflows that reduce friction between development and operations.',
+    statement: 'Your Second Philosophy Statement',
+    detail: 'Describe your second core belief or philosophy here. Update in .env.local configuration.',
   },
   {
     number: '03',
-    statement: 'Reliability First Engineering',
-    detail: 'I prioritize stability and fault tolerance by designing systems with health checks, rollback strategies, and zero-downtime deployment patterns. Failures are inevitable; resilience is intentional.',
+    statement: 'Your Third Philosophy Statement',
+    detail: 'Describe your third core belief or philosophy here. Update in .env.local configuration.',
   },
   {
     number: '04',
-    statement: 'Learn, Build, and Grow Through Implementation',
-    detail: 'I focus on hands-on learning by building real systems, solving practical problems, and continuously improving through experimentation and iteration.',
+    statement: 'Your Fourth Philosophy Statement',
+    detail: 'Describe your fourth core belief or philosophy here. Update in .env.local configuration.',
   },
 ]
 
 export const SECTIONS = [
   { id: 'hero', label: 'Welcome' },
   { id: 'about', label: 'About' },
+  { id: 'profile', label: 'Profile' },
   { id: 'journey', label: 'Journey' },
   { id: 'projects', label: 'Projects' },
   { id: 'philosophy', label: 'Philosophy' },
@@ -146,28 +229,28 @@ export const TERMINAL_COMMANDS: Record<string, string> = {
 │  🕐 ${PERSONAL.timezone}
 │  ${PERSONAL.available ? '🟢 Open to opportunities' : '🔴 Not available'}
 └─────────────────────────────┘`,
-  skills: `DevOps:     Docker · Docker Compose · Jenkins · AWS EC2 · NGINX · Blue-Green Deployment
-Backend:    Node.js · Express.js · Python · FastAPI · REST APIs · MongoDB
-Frontend:   React.js · TypeScript · Tailwind CSS · EJS
-Tools:      Git · GitHub · Postman · Docker Hub · Socket.io · VS Code`,
-  projects: PROJECTS.filter(p => p.featured).map(p => `▸ ${p.title}\n  ${p.description}`).join('\n\n'),
+  skills: `Your skills go here. Update in .env.local or SKILLS constant.
+  
+Customize your skill categories and technologies to match your experience.
+This terminal message is dynamically generated from TERMINAL_COMMANDS.`,
+  projects: `Featured projects will display here.
+  
+Update project information in PROJECTS constant with your actual repositories.
+Currently showing placeholder URLs - update with real GitHub links.`,
   contact: `📧 ${SOCIAL.email}
 🔗 ${SOCIAL.github}
 💼 ${SOCIAL.linkedin}
 🐦 ${SOCIAL.twitter}`,
   hire: `Why work with me?
 
-✦ DevOps expertise in CI/CD automation, containerization, and cloud deployment
-✦ Zero-downtime deployment strategies with health checks and rollback mechanisms
-✦ Full stack capability — backend APIs to production infrastructure
-✦ Strong focus on reliability, automation, and system thinking
-✦ Hands-on experience with Jenkins, Docker, AWS, and NGINX
+Update this section with your unique value proposition.
+Customize in TERMINAL_COMMANDS constant with your strengths.
 
 Let's talk → ${SOCIAL.email}`,
 }
 
 export const PROJECT_CATEGORIES = [
-  { key: 'all', label: 'All' },
+  { key: 'all', label: 'All in One' },
   { key: 'devops', label: 'DevOps' },
   { key: 'fullstack', label: 'Full Stack' },
   { key: 'opensource', label: 'Open Source' },

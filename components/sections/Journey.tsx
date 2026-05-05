@@ -19,7 +19,7 @@ export default function Journey() {
     <section id="journey" className="card-section">
       <div className="card-bg-container"><div className="card-bg-surface" /></div>
       <div className="relative z-10 min-h-screen py-32 px-6 md:px-16 w-full">
-        <div className="section-number">03</div>
+        <div className="section-number">04</div>
 
         <motion.div
           className="max-w-4xl mx-auto"

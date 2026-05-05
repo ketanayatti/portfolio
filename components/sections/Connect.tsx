@@ -16,7 +16,7 @@ export default function Connect() {
     <section id="connect" className="card-section">
       <div className="card-bg-container"><div className="card-bg-surface" /></div>
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center py-32 px-6 md:px-16 w-full">
-        <div className="section-number">07</div>
+        <div className="section-number">08</div>
 
         {/* Background gradient blob */}
         <div className="gradient-blob" style={{ background: 'var(--accent)', left: '20%', top: '30%' }} />

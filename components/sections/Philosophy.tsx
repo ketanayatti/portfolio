@@ -15,8 +15,8 @@ export default function Philosophy() {
   return (
     <section id="philosophy" className="card-section">
       <div className="card-bg-container"><div className="card-bg-surface" style={{ backgroundColor: 'var(--bg-surface)' }} /></div>
-      <div className="relative z-10 min-h-screen flex flex-col items-center py-32 px-6 md:px-16 overflow-hidden w-full">
-        <div className="section-number">05</div>
+      <div className="relative z-10 min-h-screen flex flex-col items-center py-20 px-6 md:px-16 overflow-hidden w-full">
+        <div className="section-number">06</div>
 
         {/* 3D Orb positioned visually on the right half */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full md:w-1/2 h-[800px] pointer-events-none opacity-40 md:opacity-80">
@@ -33,8 +33,8 @@ export default function Philosophy() {
           viewport={{ once: true, margin: '-100px' }}
         >
           {/* Left Side: Accordion */}
-          <div className="flex flex-col gap-6">
-            <motion.div variants={fadeUp} className="mb-4 text-center md:text-left">
+          <div className="flex flex-col gap-5">
+            <motion.div variants={fadeUp} className="mb-2 text-center md:text-left">
               <span className="mono block mb-4">04 / philosophy</span>
               <h2 className="heading-xl">How I think about building</h2>
             </motion.div>

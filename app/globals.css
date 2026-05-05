@@ -209,7 +209,7 @@ main {
   top: 50%;
   right: 5%;
   transform: translateY(-50%);
-  font-size: clamp(8rem, 20vw, 20rem);
+  font-size: clamp(10rem, 25vw, 24rem);
   font-weight: 700;
   color: var(--text-primary);
   opacity: 0.03;

@@ -2,6 +2,7 @@ import LeftSlider from '@/components/layout/LeftSlider'
 import RightSlider from '@/components/layout/RightSlider'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
+import Profile from '@/components/sections/Profile'
 import Journey from '@/components/sections/Journey'
 import Projects from '@/components/sections/Projects'
 import Philosophy from '@/components/sections/Philosophy'
@@ -15,6 +16,7 @@ export default function Home() {
       <main className="ml-0 mr-0 md:ml-12 lg:mr-12">
         <Hero />
         <About />
+        <Profile />
         <Journey />
         <Projects />
         <Philosophy />

@@ -119,7 +119,7 @@ export default function Interactive() {
     <section id="interactive" className="card-section">
       <div className="card-bg-container"><div className="card-bg-surface" /></div>
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center py-32 px-6 md:px-16 w-full">
-        <div className="section-number">06</div>
+        <div className="section-number">07</div>
 
         <motion.div
           className="max-w-6xl mx-auto w-full flex flex-col items-center"
