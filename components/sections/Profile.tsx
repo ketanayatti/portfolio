@@ -70,11 +70,6 @@ export default function Profile() {
   const [direction, setDirection] = useState<1 | -1>(1)
   const total = PROFILE_CARDS.length
 
-  const go = (delta: 1 | -1) => {
-    setDirection(delta)
-    setActive((prev) => (prev + delta + total) % total)
-  }
-
   const slideVariants = {
     enter: (dir: number) => ({
       x: dir > 0 ? 120 : -120,
@@ -262,17 +257,17 @@ function ProfileCard({ card, isActive, onClick }: ProfileCardProps) {
         <h3 className="text-lg font-bold leading-tight tracking-[-0.01em]">
           {card.role}
         </h3>
-        {(card as any).subtitle && (
+        {card.subtitle && (
           <p className="text-xs opacity-60" style={{ color: 'var(--text-secondary)' }}>
-            {(card as any).subtitle}
+            {card.subtitle}
           </p>
         )}
       </div>
 
       {/* Description */}
-      {(card as any).description && (
+      {card.description && (
         <p className="text-xs leading-relaxed opacity-70" style={{ color: 'var(--text-secondary)' }}>
-          {(card as any).description}
+          {card.description}
         </p>
       )}
 

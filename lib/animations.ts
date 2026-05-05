@@ -3,7 +3,6 @@ import { Variants } from 'framer-motion'
 // Custom easing functions for premium feel
 const easeOutExpo = [0.16, 1, 0.3, 1]
 const easeOutCubic = [0.33, 1, 0.68, 1]
-const easeInOutQuart = [0.77, 0, 0.175, 1]
 
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
