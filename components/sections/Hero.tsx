@@ -68,7 +68,7 @@ export default function Hero() {
 
           {/* Main headline */}
           <motion.h1 variants={fadeUp} className="display mb-6">
-            <AnimatedText text="I build systems that breathe." delay={0.2} />
+            <AnimatedText text="Systems built to survive production." delay={0.2} />
           </motion.h1>
 
           {/* Subtext */}

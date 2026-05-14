@@ -20,13 +20,13 @@ const geistMono = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Portfolio — DevOps & Full Stack Developer',
-  description: 'Portfolio of a DevOps engineer and full stack developer building scalable systems and elegant products.',
-  keywords: ['DevOps', 'Full Stack', 'Next.js', 'Kubernetes', 'Python', 'Portfolio'],
+  title: 'Portfolio — DevOps Engineer',
+  description: 'DevOps Engineer focused on deployment automation, CI/CD pipelines, and infrastructure reliability — with full-stack background that makes the application side visible too.',
+  keywords: ['DevOps', 'CI/CD', 'Infrastructure', 'Deployment', 'Jenkins', 'Docker', 'Portfolio'],
   viewport: 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover',
   openGraph: {
-    title: 'Portfolio — DevOps & Full Stack Developer',
-    description: 'Crafting infrastructure and products that scale from one to millions.',
+    title: 'Portfolio — DevOps Engineer',
+    description: 'Systems built to survive production.',
     type: 'website',
   },
   twitter: {

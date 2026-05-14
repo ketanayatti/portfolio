@@ -8,7 +8,7 @@ import BrickWall from '@/components/ui/BrickWall'
 import ProjectBrick from '@/components/ui/ProjectBrick'
 
 export default function Projects() {
-  const [activeWall, setActiveWall] = useState('all')
+  const [activeWall, setActiveWall] = useState('devops')
 
   // Deduplicate projects for 'all' view while keeping category-specific filtering
   const filtered = activeWall === 'all' 

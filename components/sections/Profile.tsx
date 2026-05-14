@@ -16,25 +16,25 @@ const PROFILE_CARDS_BASE = [
     subtitle: 'Infrastructure, Automation & System Reliability',
     icon: Server,
     tags: ['CI/CD', 'Docker', 'AWS', 'Linux', 'NGINX', 'Automation', 'Reliability'],
-    description: 'Focused on building and maintaining production-grade systems with automation and reliability at the core. Designs CI/CD pipelines, manages infrastructure, and ensures systems remain stable under failure conditions.',
+    description: 'Focused on deployment automation, CI/CD pipeline design, and infrastructure reliability. Thinks about systems from the deployment boundary — how releases behave, how failures propagate, how rollback restores stability.',
     highlights: [
-      { label: 'CI/CD Automation', value: 'Jenkins, GitHub Actions' },
-      { label: 'AWS Infrastructure', value: 'EC2, VPC, S3, CloudWatch' },
-      { label: 'Zero-Downtime Deployment', value: 'Blue-Green, Rollback' },
+      { label: 'CI/CD Automation', value: 'Jenkins · GitHub Actions' },
+      { label: 'Deployment Systems', value: 'Blue-Green · Rollback · Health-Gates' },
+      { label: 'Infrastructure', value: 'Docker · Nginx · Linux · AWS EC2' },
     ],
   },
   {
     id: 'fullstack',
     index: '02',
-    role: 'Full Stack Engineering',
-    subtitle: 'End-to-End Application Development',
+    role: 'Application Background',
+    subtitle: 'Context That Strengthens Infrastructure Decisions',
     icon: Layers,
-    tags: ['React', 'Node.js', 'TypeScript', 'FastAPI', 'MongoDB'],
-    description: 'Experienced in building complete systems from frontend to backend, ensuring seamless integration between application and infrastructure layers.',
+    tags: ['React', 'Node.js', 'TypeScript', 'MongoDB', 'Redis'],
+    description: 'Built applications before building deployment systems. That context — understanding how software behaves, how APIs fail, how state flows — informs infrastructure decisions that serve applications well.',
     highlights: [
-      { label: 'Frontend Systems', value: 'React, TypeScript, Next.js' },
-      { label: 'Backend APIs', value: 'Node.js, Express, FastAPI' },
-      { label: 'Full Lifecycle Development', value: 'End-to-End Integration' },
+      { label: 'Frontend', value: 'React · TypeScript' },
+      { label: 'Backend APIs', value: 'Node.js · Express' },
+      { label: 'Integration', value: 'REST · WebSockets · Redis' },
     ],
   },
 ]
@@ -112,10 +112,10 @@ export default function Profile() {
               Professional Profile
             </span>
             <h2 className="text-5xl lg:text-6xl font-bold leading-[1.1] tracking-[-0.02em]">
-              Hybrid Engineer
+              Engineering Identity
             </h2>
             <p className="text-lg opacity-70 max-w-xl">
-              DevOps-focused with comprehensive full-stack development experience
+              DevOps-focused. Application-aware.
             </p>
           </motion.div>
 

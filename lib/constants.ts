@@ -4,8 +4,12 @@
 
 export const PERSONAL = {
   name: 'Ketan Ayatti',
-  tagline: 'DevOps Engineer | Full Stack Systems',
-  bio: 'I\'m Ketan Ayatti, focused on building and shipping complete products end-to-end. My approach to DevOps is grounded in a simple cycle — create, break, and fix — which helps me understand systems at a deeper level rather than just operating them. I work with a systems mindset, valuing accountability, ownership, and clarity in how software is designed, built, and maintained.',
+  tagline: 'DevOps Engineer · Deployment Automation & Infrastructure Reliability',
+  bio: `My focus is on how systems behave after they're deployed.
+
+I started in application development — React interfaces, REST API integration, schema validation — and that work gave me an accurate picture of what applications need from their infrastructure. Over time it pushed me into deployment systems: Jenkins pipelines, Docker environments, Linux server configuration, reverse proxy routing, and CI/CD workflows designed for production stability.
+
+What I care about operationally: rollback safety, health-check validation, traffic routing correctness, deployment consistency, and failure recoverability.`,
   location: 'India',
   timezone: 'IST (UTC+5:30)',
   available: true,
@@ -21,19 +25,31 @@ export const SOCIAL = {
 }
 
 export const SKILLS = [
-  // ── DevOps & Infrastructure ──
-  'Docker', 'Docker Compose', 'Jenkins', 'GitHub Actions', 'AWS EC2', 'AWS VPC', 'AWS IAM', 'AWS S3', 'AWS CloudWatch', 'NGINX', 'Apache', 'Blue-Green Deployment', 'Zero-Downtime Deployment', 'Linux', 'Ubuntu', 'Bash Scripting', 'Deployment Automation', 'Health Checks', 'Monitoring', 'Automated Rollbacks', 'Container Networking',
-  // ── Cloud & Systems Engineering ──
-  'Infrastructure Setup', 'SSH Hardening', 'Firewall Rules', 'Least Privilege', 'Environment Management', 'System Reliability', 'Watchdog Scripts', 'Self-Healing Systems', 'Logging',
-  // ── Backend ──
-  'Node.js', 'Express.js', 'FastAPI', 'Python', 'REST APIs', 'WebSockets', 'Socket.io', 'JWT Authentication',
-  // ── Frontend ──
-  'React.js', 'TypeScript', 'Tailwind CSS', 'Next.js',
-  // ── Databases ──
-  'MongoDB', 'Redis', 'MySQL',
-  // ── Tools & Platforms ──
-  'Git', 'GitHub', 'Postman', 'Docker Hub', 'VS Code', 'CI/CD Pipelines',
+  // ── DevOps & Infrastructure (Primary) ──
+  'CI/CD Pipelines', 'Jenkins', 'Docker', 'Docker Compose', 'Nginx', 'Linux', 'Bash', 'AWS EC2', 'Blue-Green Deployment', 'Zero-Downtime Deployment', 'Automated Rollback', 'Health-Check Validation', 'Deployment Automation', 'Infrastructure Reliability',
+  // ── Systems & Operations (Secondary) ──
+  'SSH Configuration', 'Firewall Rules', 'Container Networking', 'Environment Management', 'System Reliability', 'Logging', 'Self-Healing Systems',
+  // ── Application Stack (Tertiary) ──
+  'Node.js', 'Express', 'Redis', 'MongoDB', 'React', 'TypeScript',
 ]
+
+export const SKILLS_GROUPED = {
+  devops: {
+    label: 'DevOps & Infrastructure',
+    weight: 'primary' as const,
+    skills: ['CI/CD Pipelines', 'Jenkins', 'Docker', 'Docker Compose', 'Nginx', 'Linux', 'Bash', 'AWS EC2', 'Blue-Green Deployment', 'Zero-Downtime Deployment', 'Automated Rollback', 'Health-Check Validation', 'Deployment Automation', 'Infrastructure Reliability'],
+  },
+  systems: {
+    label: 'Systems & Operations',
+    weight: 'secondary' as const,
+    skills: ['SSH Configuration', 'Firewall Rules', 'Container Networking', 'Environment Management', 'System Reliability', 'Logging', 'Self-Healing Systems'],
+  },
+  application: {
+    label: 'Application Stack',
+    weight: 'tertiary' as const,
+    skills: ['Node.js', 'Express', 'Redis', 'MongoDB', 'React', 'TypeScript'],
+  },
+}
 
 export const PROJECTS = [
   // DevOps & Full Stack - Featured
@@ -120,41 +136,25 @@ export const PROJECTS = [
     featured: false,
   },
 
-  // DevOps & Open Source - Featured
+  // Open Source
   {
     id: 7,
     title: 'ShareDrop',
     outcome: 'ShareDrop is a local file sharing app that works across Android, Mac, Windows, Linux, iOS, and Web. No internet, no account, no cloud — just connect to the same WiFi and share files directly between your devices. It\'s built with Kotlin Multiplatform and Compose Multiplatform, so most of the code is written once and runs everywhere.',
     tags: ['Kotlin Multiplatform', 'Compose Multiplatform', 'Android', 'iOS', 'macOS', 'Windows', 'Linux', 'File Sharing', 'Local Network', 'Cross-platform'],
-    category: 'opensource' as const,
+    category: 'fullstack' as const,
     github: 'https://github.com/ketanayatti/sharedrop.git',
-    featured: true,
-  },
-  {
-    id: 7,
-    title: 'ShareDrop',
-    outcome: 'ShareDrop is a local file sharing app that works across Android, Mac, Windows, Linux, iOS, and Web. No internet, no account, no cloud — just connect to the same WiFi and share files directly between your devices. It\'s built with Kotlin Multiplatform and Compose Multiplatform, so most of the code is written once and runs everywhere.',
-    tags: ['Kotlin Multiplatform', 'Compose Multiplatform', 'Android', 'iOS', 'macOS', 'Windows', 'Linux', 'File Sharing', 'Local Network', 'Cross-platform'],
-    category: 'devops' as const,
-    github: 'https://github.com/ketanayatti/sharedrop.git',
-    featured: true,
+    featured: false,
   },
 ]
 
 export const JOURNEY = [
   {
-    year: 'Feb 2026 – Present',
+    year: 'Jan 2026 – Apr 2026',
     title: 'DevOps Engineer Intern',
     org: 'IonIdea',
-    description: 'Transitioned into DevOps under mentorship, working on production-grade infrastructure and deployment systems. Designed CI/CD pipelines using Jenkins with GitHub webhook integration. Containerized applications using Docker with multi-stage builds. Deployed applications on AWS EC2 with secure configurations. Implemented Blue-Green deployment with zero downtime. Built health-check validation and rollback systems for reliability.',
-    tags: ['Jenkins', 'Docker', 'AWS EC2', 'NGINX', 'Linux', 'Bash', 'CI/CD', 'GitHub Webhooks'],
-  },
-  {
-    year: 'Jan 2026 – Feb 2026',
-    title: 'Frontend Engineer Intern',
-    org: 'IonIdea',
-    description: 'Built a production-ready OBE module system with full CRUD workflows. Developed reusable UI components and schema-based validation using Zod. Integrated AG Grid for data handling and UI rendering. Connected frontend to backend APIs with optimized state handling.',
-    tags: ['React.js', 'TypeScript', 'REST APIs', 'Zod', 'AG Grid', 'FastAPI', 'MariaDB'],
+    description: 'Joined as a frontend developer on a client-facing Outcome-Based Education platform — built React modules with TypeScript and AG Grid, integrated REST APIs with Zod-based schema validation. Transitioned into DevOps-focused responsibilities as the internship progressed, working on production-grade infrastructure and deployment systems.',
+    tags: ['JENKINS', 'DOCKER', 'AWS EC2', 'NGINX', 'LINUX', 'BASH', 'CI/CD'],
   },
 ]
 
@@ -194,10 +194,10 @@ export const SECTIONS = [
 
 export const ROLES = [
   'DevOps Engineer',
-  'Cloud Infrastructure Engineer',
-  'Automation & Reliability Engineer',
-  'Systems-Focused Software Engineer',
-  'Full Stack Engineer with DevOps Expertise',
+  'Deployment Automation',
+  'CI/CD Pipeline Engineer',
+  'Infrastructure Reliability',
+  'Zero-Downtime Systems',
 ]
 
 export const TERMINAL_COMMANDS: Record<string, string> = {
@@ -220,20 +220,14 @@ export const TERMINAL_COMMANDS: Record<string, string> = {
 │  ${PERSONAL.available ? '🟢 Open to opportunities' : '🔴 Not available'}
 └─────────────────────────────┘`,
   skills: `CORE SKILLS:
-  ► DevOps & Infrastructure: Docker, Docker Compose, Jenkins, GitHub Actions, AWS (EC2, VPC, IAM, S3, CloudWatch), NGINX, Blue-Green Deployment, Linux, Bash Scripting
-  ► Backend: Node.js, Express.js, FastAPI, Python, REST APIs, WebSockets, Socket.io, JWT Authentication
-  ► Frontend: React.js, TypeScript, Tailwind CSS, Next.js
-  ► Databases: MongoDB, Redis, MySQL
-  ► Tools: Git, GitHub, Postman, Docker Hub, VS Code, CI/CD Pipelines`,
+  ► DevOps & Infrastructure: CI/CD Pipelines, Jenkins, Docker, Docker Compose, NGINX, Linux, Bash, AWS EC2, Blue-Green Deployment, Zero-Downtime Deployment, Health-Check Validation, Infrastructure Reliability
+  ► Systems & Operations: SSH Configuration, Firewall Rules, Container Networking, Environment Management, System Reliability, Logging, Self-Healing Systems
+  ► Application Stack: Node.js, Express, Redis, MongoDB, React, TypeScript`,
   experience: `PROFESSIONAL JOURNEY:
   
   → ${JOURNEY[0].year} | ${JOURNEY[0].title} @ ${JOURNEY[0].org}
     ${JOURNEY[0].description}
-    Tech: ${JOURNEY[0].tags.join(', ')}
-  
-  → ${JOURNEY[1].year} | ${JOURNEY[1].title} @ ${JOURNEY[1].org}
-    ${JOURNEY[1].description}
-    Tech: ${JOURNEY[1].tags.join(', ')}`,
+    Tech: ${JOURNEY[0].tags.join(', ')}`,
   'tech-stack': `TECHNOLOGY STACK:
   
   Backend:            Node.js, Express, FastAPI, Python
@@ -296,8 +290,7 @@ BIO:         ${PERSONAL.bio}
 }
 
 export const PROJECT_CATEGORIES = [
-  { key: 'all', label: 'All in One' },
   { key: 'devops', label: 'DevOps' },
+  { key: 'infrastructure', label: 'Infrastructure' },
   { key: 'fullstack', label: 'Full Stack' },
-  { key: 'opensource', label: 'Open Source' },
 ] as const
