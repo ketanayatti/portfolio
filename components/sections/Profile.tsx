@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 import { useTheme } from '@/components/providers/ThemeProvider'
@@ -61,13 +61,49 @@ const getAccentColors = (theme: 'dark' | 'light') => {
 
 export default function Profile() {
   const { theme } = useTheme()
-  const [active, setActive] = useState(0) // DevOps card by default
+  const [active, setActive] = useState(0)
+  const [direction, setDirection] = useState<1 | -1>(1)
+  const dragStartXRef = useRef(0)
+  const dragEndXRef = useRef(0)
+  
   const accentColors = getAccentColors(theme)
   const PROFILE_CARDS = PROFILE_CARDS_BASE.map(card => ({
     ...card,
     ...accentColors,
   }))
-  const [direction, setDirection] = useState<1 | -1>(1)
+
+  const handlePrevious = () => {
+    if (active > 0) {
+      setDirection(-1)
+      setActive(active - 1)
+    }
+  }
+
+  const handleNext = () => {
+    if (active < PROFILE_CARDS.length - 1) {
+      setDirection(1)
+      setActive(active + 1)
+    }
+  }
+
+  // Detect swipe gestures
+  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
+    dragStartXRef.current = e.clientX
+  }
+
+  const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+    dragEndXRef.current = e.clientX
+    const diff = dragStartXRef.current - dragEndXRef.current
+
+    // Swipe right (next card)
+    if (diff > 50) {
+      handleNext()
+    }
+    // Swipe left (previous card)
+    else if (diff < -50) {
+      handlePrevious()
+    }
+  }
 
   const slideVariants = {
     enter: (dir: number) => ({
@@ -95,7 +131,7 @@ export default function Profile() {
         <div className="card-bg-surface" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center py-20 px-6 md:px-16 w-full">
+      <div className="relative z-10 flex flex-col items-center py-20 px-6 md:py-32 md:px-16 w-full">
         {/* Section background number */}
         <div className="section-number">03</div>
 
@@ -134,8 +170,16 @@ export default function Profile() {
               ))}
             </div>
 
-            {/* Mobile: single animated card */}
-            <div className="md:hidden relative w-full overflow-hidden" style={{ minHeight: 380 }}>
+            {/* Mobile: single animated card with swipe support */}
+            <div 
+              className="md:hidden relative w-full overflow-hidden select-none"
+              style={{ minHeight: 380, touchAction: 'pan-y' }}
+              draggable
+              onDragStart={handleDragStart}
+              onDragEnd={handleDragEnd}
+              role="region"
+              aria-label="Professional profile cards - swipe to navigate"
+            >
               <AnimatePresence custom={direction} mode="wait">
                 <motion.div
                   key={active}
@@ -144,7 +188,7 @@ export default function Profile() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  className="absolute inset-0"
+                  className="absolute inset-0 cursor-grab active:cursor-grabbing"
                 >
                   <ProfileCard
                     card={PROFILE_CARDS[active]}
@@ -162,7 +206,7 @@ export default function Profile() {
                   key={card.id}
                   onClick={() => { setDirection(i > active ? 1 : -1); setActive(i) }}
                   aria-label={`Switch to ${card.role}`}
-                  className="group flex flex-col items-center gap-1.5 transition-all duration-400"
+                  className="group flex flex-col items-center gap-1.5 transition-all duration-400 hover:scale-110"
                 >
                   {/* Line segment */}
                   <span
@@ -187,6 +231,11 @@ export default function Profile() {
                 </button>
               ))}
             </div>
+
+            {/* Mobile hint text */}
+            <p className="md:hidden text-xs opacity-50 text-center mt-2" style={{ color: 'var(--text-muted)' }}>
+              Drag or swipe to navigate
+            </p>
           </motion.div>
         </motion.div>
       </div>

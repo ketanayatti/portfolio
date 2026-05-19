@@ -14,16 +14,21 @@ interface MagneticButtonProps {
 export default function MagneticButton({ children, className = '', onClick, href, variant = 'primary' }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [isHovering, setIsHovering] = useState(false)
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return
+    if (!ref.current || !isHovering) return
     const rect = ref.current.getBoundingClientRect()
     const x = e.clientX - rect.left - rect.width / 2
     const y = e.clientY - rect.top - rect.height / 2
-    setPosition({ x: x * 0.3, y: y * 0.3 })
+    setPosition({ x: x * 0.25, y: y * 0.25 })
   }
 
-  const handleMouseLeave = () => setPosition({ x: 0, y: 0 })
+  const handleMouseEnter = () => setIsHovering(true)
+  const handleMouseLeave = () => {
+    setIsHovering(false)
+    setPosition({ x: 0, y: 0 })
+  }
 
   const isPrimary = variant === 'primary'
 
@@ -31,18 +36,22 @@ export default function MagneticButton({ children, className = '', onClick, href
     <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       animate={{ x: position.x, y: position.y }}
-      transition={{ type: 'spring', stiffness: 350, damping: 15, mass: 0.5 }}
-      className={`inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium tracking-wide ${className}`}
+      transition={{ type: 'spring', stiffness: 400, damping: 12, mass: 0.4 }}
+      className={`inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium tracking-wide transition-colors duration-200 ${className}`}
       style={{
         backgroundColor: isPrimary ? 'var(--accent)' : 'transparent',
         color: isPrimary ? '#fff' : 'var(--text-primary)',
         border: isPrimary ? 'none' : '1px solid var(--bg-border)',
-        boxShadow: isPrimary ? '0 0 20px var(--accent-glow)' : 'none',
+        boxShadow: isPrimary ? '0 8px 24px -4px var(--accent-glow)' : 'none',
       }}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ 
+        scale: 1.06,
+        boxShadow: isPrimary ? '0 12px 32px -6px var(--accent-glow)' : '0 8px 16px rgba(0,0,0,0.1)'
+      }}
+      whileTap={{ scale: 0.92 }}
       data-cursor="link"
     >
       {children}

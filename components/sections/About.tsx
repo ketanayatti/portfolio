@@ -11,18 +11,48 @@ export default function About() {
   return (
     <section id="about" className="card-section">
       <div className="card-bg-container"><div className="card-bg-surface" /></div>
-      <div className="relative z-10 flex flex-col items-center py-20 px-6 md:px-16 w-full">
+      <div className="relative z-10 flex flex-col items-center py-20 px-6 md:py-32 md:px-16 w-full">
         <div className="section-number">02</div>
 
         <motion.div
-          className="max-w-6xl mx-auto w-full flex flex-col gap-12"
+          className="max-w-6xl mx-auto w-full flex flex-col gap-8 md:gap-12"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
-          {/* Header - Left & Right Layout */}
-          <motion.div variants={fadeUp} className="flex flex-col lg:flex-row lg:items-start lg:gap-16 gap-8">
+          {/* Mobile Compact Header */}
+          <motion.div variants={fadeUp} className="flex flex-col gap-3 md:hidden">
+            <span className="mono text-xs font-semibold tracking-[0.15em] opacity-60 uppercase">About Me</span>
+            <h2 className="text-4xl font-bold leading-[1.1] tracking-[-0.02em]">
+              {PERSONAL.name}
+            </h2>
+            <p className="text-lg font-bold leading-[1.4]" style={{ color: 'var(--accent)' }}>
+              {PERSONAL.tagline}
+            </p>
+            <div className="flex flex-wrap gap-2 pt-1">
+              {PERSONAL.available && (
+                <div className="inline-flex items-center gap-2 px-2.5 py-1.5 rounded-full backdrop-blur-sm text-xs" style={{ backgroundColor: 'var(--accent-soft)', border: '1px solid var(--bg-border)', color: 'var(--accent)' }}>
+                  <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: 'var(--accent)' }} />
+                  <span className="font-medium">Available</span>
+                </div>
+              )}
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full backdrop-blur-sm text-xs" style={{ backgroundColor: 'var(--accent-soft)', border: '1px solid var(--bg-border)', color: 'var(--accent)' }}>
+                <MapPin size={12} strokeWidth={2} />
+                <span className="font-medium">{PERSONAL.location}</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Mobile Compact Bio */}
+          <motion.div variants={fadeUp} className="md:hidden flex flex-col gap-4">
+            <p className="text-sm leading-[1.7]" style={{ color: 'var(--text-secondary)' }}>
+              {PERSONAL.bio.split('\n\n')[0]}
+            </p>
+          </motion.div>
+
+          {/* Desktop: Left & Right Layout - Unchanged */}
+          <motion.div variants={fadeUp} className="hidden md:flex flex-col lg:flex-row lg:items-start lg:gap-16 gap-8">
             {/* Left Side - Name and Tagline */}
             <div className="flex flex-col gap-4 lg:w-2/5">
               <span className="mono text-xs font-semibold tracking-[0.15em] opacity-60 uppercase">About Me</span>
@@ -58,19 +88,18 @@ export default function About() {
             </div>
           </motion.div>
 
-
-          {/* Skills Section - Organized by Category */}
-          <motion.div variants={fadeUp} className="pt-4">
-            <span className="mono text-xs font-semibold tracking-[0.15em] opacity-60 uppercase block mb-6">Tools & Technologies</span>
-            <div className="flex flex-wrap gap-2.5">
+          {/* Skills Section - Responsive */}
+          <motion.div variants={fadeUp} className="pt-2 md:pt-4">
+            <span className="mono text-xs font-semibold tracking-[0.15em] opacity-60 uppercase block mb-4 md:mb-6">Tools & Technologies</span>
+            <div className="flex flex-wrap gap-2">
               {SKILLS.map((skill, i) => (
-                <SkillBadge key={skill} name={skill} delay={i * 0.05} />
+                <SkillBadge key={skill} name={skill} delay={i * 0.04} />
               ))}
             </div>
           </motion.div>
 
           {/* CTA Buttons */}
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-4 pt-4">
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-4 pt-2 md:pt-4">
             <MagneticButton href="#projects" variant="ghost">
               View My Work
             </MagneticButton>

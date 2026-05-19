@@ -8,32 +8,32 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    // F1 style fast counting: 0 to 100% very quickly
+    // Ultra-fast loading sequence with aggressive progression
     let currentProgress = 0
-    const interval = setInterval(() => {
-      // Random fast jumps mimicking telemetry data
-      currentProgress += Math.floor(Math.random() * 5) + 2
-      if (currentProgress >= 100) {
-        currentProgress = 100
-        setProgress(100)
-        clearInterval(interval)
-        
-        // Small delay at 100% before revealing site
-        setTimeout(() => {
-          setLoading(false)
-        }, 400)
-      } else {
-        setProgress(currentProgress)
-      }
-    }, 20)
+    const progressSteps = [
+      { delay: 0, target: 25 },
+      { delay: 80, target: 50 },
+      { delay: 140, target: 75 },
+      { delay: 200, target: 100 },
+    ]
 
-    // Fallback safety to ensure loader always disappears
+    const intervals = progressSteps.map(step => {
+      return setTimeout(() => {
+        setProgress(step.target)
+        if (step.target === 100) {
+          // Instantly reveal on completion
+          setTimeout(() => setLoading(false), 150)
+        }
+      }, step.delay)
+    })
+
+    // Ultimate safety net
     const safetyTimeout = setTimeout(() => {
       setLoading(false)
-    }, 3000)
+    }, 2000)
 
     return () => {
-      clearInterval(interval)
+      intervals.forEach(clearTimeout)
       clearTimeout(safetyTimeout)
     }
   }, [])
@@ -47,56 +47,56 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
             className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden"
             style={{ backgroundColor: 'var(--bg-base)' }}
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
-            transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+            exit={{ opacity: 0, scale: 1.02 }}
+            transition={{ duration: 0.35, ease: [0.76, 0, 0.24, 1] }}
           >
-            {/* Speed lines / Racing aesthetic background */}
+            {/* Performance background */}
             <div 
-              className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+              className="absolute inset-0 opacity-[0.02] pointer-events-none" 
               style={{ 
                 background: 'repeating-linear-gradient(45deg, transparent, transparent 10px, var(--accent) 10px, var(--accent) 20px)',
                 backgroundSize: '200% 200%',
-                animation: 'slide-bg 2s linear infinite'
               }} 
             />
             
             <div className="relative z-10 flex flex-col w-full max-w-sm md:max-w-lg px-6 md:px-8 gap-6 md:gap-8">
               
-              {/* Progress Bar Container */}
+              {/* Ultra-responsive progress bar */}
               <div className="w-full h-[2px] relative overflow-hidden" style={{ backgroundColor: 'var(--bg-border)' }}>
                 <motion.div 
                   className="absolute top-0 left-0 h-full"
                   style={{ 
                     backgroundColor: 'var(--accent)',
                     width: `${progress}%`,
-                    boxShadow: '0 0 10px var(--accent-glow)' 
+                    boxShadow: '0 0 16px var(--accent-glow)' 
                   }}
-                  transition={{ ease: "linear" }}
+                  transition={{ ease: 'easeOut', duration: 0.3 }}
                 />
               </div>
 
-              {/* Data & Telemetry Display */}
+              {/* Status display */}
               <div className="flex items-end justify-between w-full gap-4">
                 <div className="flex flex-col gap-1 min-w-0">
                   <span className="mono text-[9px] md:text-[10px] tracking-[0.2em]" style={{ color: 'var(--text-muted)' }}>
-                    INITIALIZING
+                    READY
                   </span>
                   <div className="flex items-center gap-2 flex-wrap">
                     <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: progress === 100 ? 'var(--green)' : 'var(--accent)' }} />
                     <span className="mono text-[8px] md:text-[10px] tracking-[0.2em] leading-none" style={{ color: progress === 100 ? 'var(--green)' : 'var(--accent)' }}>
-                      {progress < 100 ? 'CALIBRATING...' : 'READY'}
+                      {progress < 100 ? 'LOADING' : 'COMPLETE'}
                     </span>
                   </div>
                 </div>
                 
-                {/* Responsive Progress Counter */}
+                {/* Progress percentage */}
                 <div className="flex items-baseline font-bold italic flex-shrink-0" style={{ fontFamily: 'var(--font-geist-mono)', color: 'var(--text-primary)' }}>
-                  <span 
+                  <motion.span 
                     className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tabular-nums tracking-tighter leading-none" 
                     style={{ textShadow: '0 0 20px var(--accent-glow)' }}
+                    animate={{ opacity: 1 }}
                   >
                     {progress.toString().padStart(3, '0')}
-                  </span>
+                  </motion.span>
                   <span className="text-base sm:text-lg md:text-xl lg:text-2xl ml-0.5 md:ml-1 leading-none" style={{ color: 'var(--accent)' }}>%</span>
                 </div>
               </div>
