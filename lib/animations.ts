@@ -4,8 +4,6 @@ import { Variants } from 'framer-motion'
 const easeOutExpo = [0.16, 1, 0.3, 1]
 const easeOutCubic = [0.33, 1, 0.68, 1]
 const easeOutQuad = [0.25, 0.46, 0.45, 0.94]
-const easeInOutCubic = [0.65, 0, 0.35, 1]
-const easeOutQuint = [0.22, 1, 0.36, 1]
 
 // ─── Fast Entrance Animations ──────────────────────────
 export const fadeUp: Variants = {

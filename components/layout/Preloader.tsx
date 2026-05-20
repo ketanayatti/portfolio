@@ -9,7 +9,6 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Ultra-fast loading sequence with aggressive progression
-    let currentProgress = 0
     const progressSteps = [
       { delay: 0, target: 25 },
       { delay: 80, target: 50 },
