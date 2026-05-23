@@ -188,7 +188,7 @@ export const SECTIONS = [
   { id: 'journey', label: 'Journey' },
   { id: 'projects', label: 'Projects' },
   { id: 'philosophy', label: 'Philosophy' },
-  { id: 'interactive', label: 'Playground' },
+  { id: 'interactive', label: 'Runtime' },
   { id: 'connect', label: 'Connect' },
 ]
 

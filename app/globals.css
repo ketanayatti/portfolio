@@ -736,6 +736,588 @@ a, button, input, textarea, select, [role="button"], [role="link"] {
   box-shadow: none;
 }
 
+/* ---------------------------------------
+   RUNTIME CONTROL CENTER
+   --------------------------------------- */
+
+.runtime-control {
+  font-family: var(--font-geist-mono);
+}
+
+.runtime-title {
+  font-family: var(--font-geist-sans);
+}
+
+.runtime-subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.runtime-shell {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.runtime-status {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--bg-border);
+  border-radius: 12px;
+  background-color: var(--bg-raised);
+}
+
+.runtime-status-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.runtime-status-label {
+  white-space: nowrap;
+}
+
+.runtime-status-value {
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  text-transform: none;
+  letter-spacing: 0.06em;
+}
+
+.runtime-status-good {
+  color: var(--green);
+}
+
+.runtime-status-warn {
+  color: var(--amber);
+}
+
+.runtime-status-bad {
+  color: var(--red);
+}
+
+.runtime-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 16px;
+}
+
+.runtime-diagram {
+  position: relative;
+  height: 420px;
+  border: 1px solid var(--bg-border);
+  border-radius: 16px;
+  background-color: var(--bg-base);
+  overflow: hidden;
+}
+
+.runtime-diagram::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23ffffff'/%3E%3C/svg%3E");
+  background-size: 24px 24px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.runtime-diagram-content {
+  position: relative;
+  height: 100%;
+  z-index: 1;
+}
+
+.runtime-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.control-edge {
+  stroke: var(--bg-border);
+  stroke-width: 1.2;
+  stroke-dasharray: 6 6;
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.control-edge-active {
+  stroke: var(--accent);
+  stroke-dasharray: 6 6;
+  animation: dash-flow 1.6s linear infinite;
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+.control-node {
+  cursor: pointer;
+}
+
+.control-node-rect {
+  fill: var(--bg-raised);
+  stroke: var(--bg-border);
+  stroke-width: 1.2;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.control-node-label {
+  fill: var(--text-secondary);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.control-node:hover .control-node-rect {
+  stroke: var(--accent);
+}
+
+.control-node:hover .control-node-label {
+  fill: var(--text-primary);
+}
+
+.control-node.is-focused .control-node-rect {
+  stroke: var(--accent);
+}
+
+.control-node.is-focused .control-node-label {
+  fill: var(--text-primary);
+}
+
+.control-node.is-active .control-node-rect {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+.control-node.is-active .control-node-label {
+  fill: var(--bg-base);
+}
+
+.runtime-detail {
+  border: 1px solid var(--bg-border);
+  border-radius: 16px;
+  background-color: var(--bg-base);
+  height: 420px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.runtime-detail-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 20px;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+.runtime-detail-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.runtime-detail-content,
+.runtime-detail-idle {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.runtime-detail-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--bg-border);
+  margin-bottom: 12px;
+  background-color: var(--bg-base);
+}
+
+.runtime-detail-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.runtime-detail-sub {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.runtime-detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  overflow: visible;
+}
+
+.runtime-scroll-hint {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.runtime-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.runtime-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.runtime-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.runtime-value {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.runtime-body {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.runtime-emphasis {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.runtime-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.runtime-chip {
+  border: 1px solid var(--bg-border);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background-color: var(--bg-raised);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.runtime-chip-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.runtime-chip-value {
+  font-size: 0.75rem;
+  color: var(--text-primary);
+}
+
+.runtime-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.runtime-list-item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--bg-border);
+}
+
+.runtime-list-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.runtime-list-index {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.runtime-list-title {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.runtime-list-desc {
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.runtime-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.runtime-timeline-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 12px;
+}
+
+.runtime-timeline-range {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.runtime-timeline-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.runtime-timeline-role {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.runtime-timeline-org {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.runtime-timeline-impact {
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.runtime-link {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.runtime-link:hover {
+  color: var(--accent);
+}
+
+.runtime-contact-line {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.runtime-contact-sub {
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.runtime-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.runtime-button-small {
+  padding: 8px 10px;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+}
+
+.runtime-availability {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.runtime-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background-color: var(--bg-border);
+}
+
+.runtime-status-dot.is-available {
+  background-color: var(--green);
+}
+
+.runtime-status-dot.is-unavailable {
+  background-color: var(--red);
+}
+
+.runtime-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.runtime-section-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.runtime-hiring-line {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.runtime-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.runtime-bullet {
+  position: relative;
+  padding-left: 12px;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.runtime-bullet::before {
+  content: '-';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+.runtime-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.runtime-tag {
+  padding: 6px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--bg-border);
+  background-color: var(--bg-raised);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.runtime-button {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--bg-border);
+  background-color: var(--bg-raised);
+  color: var(--text-primary);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.runtime-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: var(--bg-base);
+}
+
+.runtime-button.runtime-button-small {
+  background-color: transparent;
+}
+
+@media (max-width: 1024px) {
+  .runtime-main {
+    grid-template-columns: 1fr;
+  }
+
+  .runtime-diagram,
+  .runtime-detail {
+    height: 360px;
+  }
+}
+
+@media (max-width: 900px) {
+  .runtime-status {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .runtime-status {
+    grid-template-columns: 1fr;
+  }
+
+  .runtime-field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .runtime-timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  .runtime-timeline-range {
+    margin-bottom: 2px;
+  }
+}
+
 /* ═══════════════════════════════════════
    ENHANCED SMOOTH SCROLL ANIMATIONS
    ═══════════════════════════════════════ */

@@ -23,7 +23,6 @@ export const metadata: Metadata = {
   title: 'Portfolio — DevOps Engineer',
   description: 'DevOps Engineer focused on deployment automation, CI/CD pipelines, and infrastructure reliability — with full-stack background that makes the application side visible too.',
   keywords: ['DevOps', 'CI/CD', 'Infrastructure', 'Deployment', 'Jenkins', 'Docker', 'Portfolio'],
-  viewport: 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover',
   openGraph: {
     title: 'Portfolio — DevOps Engineer',
     description: 'Systems built to survive production.',
@@ -32,6 +31,14 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
   },
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({
